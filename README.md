@@ -25,6 +25,12 @@ Kroz jednostavan i pregledan korisnički interfejs, korisnici će moći pregleda
 - **_Pretraživanje dostupnih instruktora za određeni predmet_**-
   Korisnik bira filtere pretraživanja.
 
+- **_Rezervacija termina_**-
+Učenik/student će imati opciju da zakaže termin za instrukcije, a instruktor će taj termin odbiti ili prihvatiti.
+
+- **_Ocjenjivanje instruktora_**-
+Učenik/student će moći ostaviti komentar i ocjenu nakon instrukcija.
+
 
 ## **FUNKCIONALNOSTI**
 - Kreiranje korisničkog profila
@@ -33,7 +39,19 @@ Kroz jednostavan i pregledan korisnički interfejs, korisnici će moći pregleda
     - cijena
     - grad
     - predmet
-- Mogućnost brisanja svog profila
-- Mogućnost uređivanja profila
+- Mogućnost brisanja svog profila 
+- Mogućnost uređivanja korisničkog profila
     - ime
     - korisnička slika
+    - email
+    - broj
+- Mogućnost uređivanja profila instruktora
+    - ime
+    - slika instruktora
+    - predmeti koje predaje
+    - cijene
+    - email
+    - broj
+- Recenzije instruktora
+- Zakazivanje termina instrukcija
+- Odobravanje termina instrukcija od strane instruktora
