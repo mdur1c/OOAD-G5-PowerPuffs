@@ -1,4 +1,4 @@
-# _Tema: Instrukcije_
+# _EduConnect_
 
 ######
 Članovi tima su:
@@ -7,6 +7,7 @@
 3. Merima Durić
 4. Almedina Pehlivan
 
+<img src="https://user-images.githubusercontent.com/115474237/227799556-f36a8197-588a-4838-9015-bc72ed7c96aa.jpg" alt="EduConnect" align="right" width="300px" height="300px">
 
 ## **Opis teme**
 
