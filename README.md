@@ -1,11 +1,7 @@
 # _EduConnect_
 
 ######
-Članovi tima su:
-1. Selma Ljuhar
-2. Selma Ličina
-3. Merima Durić
-4. Almedina Pehlivan
+
 
 <img src="https://user-images.githubusercontent.com/115474237/227799556-f36a8197-588a-4838-9015-bc72ed7c96aa.jpg" alt="EduConnect" align="right" width="300px" height="300px">
 
@@ -33,7 +29,7 @@ Učenik/student će imati opciju da zakaže termin za instrukcije, a instruktor 
 Učenik/student će moći ostaviti komentar i ocjenu nakon instrukcija.
 
 
-## **FUNKCIONALNOSTI**
+## **Funkcionalnosti**
 - Kreiranje korisničkog profila
 - Kreiranje profila za instruktora
 - Odabir i prikaz podataka o odabranom profilu
@@ -49,3 +45,9 @@ Učenik/student će moći ostaviti komentar i ocjenu nakon instrukcija.
 - Odobravanje termina instrukcija od strane instruktora
 - Prikaz statistika
 - e-plaćanje instrukcija
+
+## **Članovi tima su:**
+1. Selma Ljuhar
+2. Selma Ličina
+3. Merima Durić
+4. Almedina Pehlivan
