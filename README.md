@@ -35,23 +35,16 @@ Učenik/student će moći ostaviti komentar i ocjenu nakon instrukcija.
 ## **FUNKCIONALNOSTI**
 - Kreiranje korisničkog profila
 - Kreiranje profila za instruktora
+- Odabir i prikaz podataka o odabranom profilu
+- Upravljanju korisničkim računima
+    - brisanje
+    - uređivanje
 - Pretraživanje koristeći filetere pretraživanja:
     - cijena
     - grad
     - predmet
-- Mogućnost brisanja svog profila 
-- Mogućnost uređivanja korisničkog profila
-    - ime
-    - korisnička slika
-    - email
-    - broj
-- Mogućnost uređivanja profila instruktora
-    - ime
-    - slika instruktora
-    - predmeti koje predaje
-    - cijene
-    - email
-    - broj
 - Recenzije instruktora
 - Zakazivanje termina instrukcija
 - Odobravanje termina instrukcija od strane instruktora
+- Prikaz statistika
+- e-plaćanje instrukcija
