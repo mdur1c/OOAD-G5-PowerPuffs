@@ -52,7 +52,7 @@ Učenik/student će moći ostaviti komentar i ocjenu nakon instrukcija.
 - Student
 
 ## **Članovi tima su:**
-1. Selma Ljuhar
-2. Selma Ličina
-3. Merima Durić
-4. Almedina Pehlivan
+1. [Selma Ljuhar](https://github.com/selmaalj)
+2. [Selma Ličina](https://github.com/slicina7)
+3. [Merima Durić](https://github.com/mdur1c)
+4. [Almedina Pehlivan](https://github.com/apehlivan1)
