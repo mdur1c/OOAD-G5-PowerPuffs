@@ -45,6 +45,12 @@ Učenik/student će moći ostaviti komentar i ocjenu nakon instrukcija.
 - Odobravanje termina instrukcija od strane instruktora
 - Prikaz statistika
 - e-plaćanje instrukcija
+- Upload profilne slike
+
+## **Akteri**
+- Administrator
+- Instruktor
+- Student
 
 ## **Članovi tima su:**
 1. Selma Ljuhar
