@@ -1,0 +1,16 @@
+SOLID PRINCIPI
+
+1.	Single responsibility principle (SRP)
+Svaka klasa u modelu ima pojedinačnu odgovornost i postoji samo jedan razlog za promjenu. Svaka klasa čuva samo njoj neophodne informacije i time izbjegavamo narušavanje ovog pravila.
+
+2.	Open - Closed principle (OCP)
+Klase su otvorene za nadogradnju, ali zatvorene za modifikacije. Promjena u bilo kojoj klasi neće forsirati modifikaciju neke druge klase. 
+
+3.	Liskov substitution principle (LSP)
+Prema ovom principu svi podtipovi se mogu zamijeniti njihovim osnovnim principima. Ovo je zadovoljeno zbog činjenice da svaka klasa koje je naslijeđena iz apstraktne klase User može se iskoristiti u svakom smislu kao i klasa User.
+
+4.	Interface Segregation Principle (ISP)
+Princip kaže da klijenti ne ovise o metodama koje neće upotrebljavati. Kako ovaj model nema interface ili debele klase ovaj princip nije narušen.
+
+5.	Dependency Inversion Principle (DIP)
+Ovaj princip je ispunjen s obzirom da imamo klasu User koja je apstraktna. Nju nasljeđuju dvije klase Student i Tutor koje nasljeđuju i sve atribute i metode apstraktne klase pored kojih imaju i vlastite.
