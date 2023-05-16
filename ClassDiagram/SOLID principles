@@ -7,7 +7,7 @@ Ova klasa će također izvršavati obračun popusta i cijene ukupno, te postavit
 
 2.	Open - Closed principle (OCP)
 Klase su otvorene za nadogradnju, ali zatvorene za modifikacije. Promjena u bilo kojoj klasi neće forsirati modifikaciju neke druge klase. 
-U našem primjeru to znači da se klase Student i Tutor mogu proširiti bez izmjene klase User.
+U našem primjeru to znači da se klase Student i Tutor mogu proširiti bez izmjene klase User. Npr. proširivanje klase student sa metodom platiRacun neće utjecati na klasu User.
 
 3.	Liskov substitution principle (LSP)
 Prema ovom principu svi podtipovi se mogu zamijeniti njihovim osnovnim principima. 
