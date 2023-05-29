@@ -1,0 +1,157 @@
+﻿body {
+}
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+    .intro h1 {
+        font-family: sans-serif;
+        font-size: 60px;
+        color: #fff;
+        font-weight: bold;
+        font-style: italic;
+        margin: 0;
+    }
+
+    .intro p {
+        font-size: 20px;
+        color: #d1d1d1;
+        text-transform: uppercase;
+        margin: 20px 0;
+    }
+
+
+
+.achievements {
+    display: flex;
+    align-items: center;
+    padding: 60px 80px 60px;
+}
+
+    .achievements achievements-heading {
+        font-size: 30px;
+        color: #333333;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+
+    .achievements .work {
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+        justify-content: space-around;
+    }
+
+    .achievements .work .work-icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        background-color: #333333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+    }
+
+        .achievements .work .work-icon .icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: #ffffff;
+        }
+
+    .achievements .work .work-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .achievements .work .work-heading {
+        font-size: 20px;
+        color: #333333;
+        text-transform: uppercase;
+        margin: 10px 0;
+    }
+
+    .achievements .work .work-text {
+        font-size: 15px;
+        color: #585858;
+        margin: 10px 0;
+    }
+
+.why-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 80px 60px;
+    border-top: 2px solid #eeeeee;
+}
+
+    .why-us img {
+        width: 500px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-left: 40px;
+    }
+
+.why-us-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+    .why-us-text h2 {
+        font-size: 30px;
+        color: #333333;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    .why-us-text p {
+        font-size: 15px;
+        color: #585858;
+        margin: 10px 0;
+    }
+
+.ft-main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 80px 80px 80px;
+    border-top: 2px solid #eeeeee;
+}
+
+    .ft-main .number-square {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        background-color: #333333;
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 80px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+
+.ft-main-item .p {
+    margin: 0;
+    font-size: 18px;
+    color: #585858;
+}
