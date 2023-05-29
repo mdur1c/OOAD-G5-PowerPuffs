@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualBasic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduConnect.Models
 {
     public class Appointment
     {
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
         public double Price { get; set; }
         public string Time { get; set; }
         public string Day { get; set; }
