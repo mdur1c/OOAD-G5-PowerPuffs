@@ -36,15 +36,21 @@ namespace EduConnect.Data.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("StudentUsername")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Time")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TutorUsername")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BillId");
+
+                    b.HasIndex("StudentUsername");
+
+                    b.HasIndex("TutorUsername");
 
                     b.ToTable("Appointment");
                 });
@@ -87,9 +93,11 @@ namespace EduConnect.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TutorUsername")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TutorUsername");
 
                     b.ToTable("Course");
                 });
@@ -129,10 +137,17 @@ namespace EduConnect.Data.Migrations
                     b.Property<double>("Rate")
                         .HasColumnType("float");
 
+                    b.Property<int>("StatisticsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("StudentUsername")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("StatisticsId");
+
+                    b.HasIndex("StudentUsername");
 
                     b.ToTable("Reviews");
                 });
@@ -391,7 +406,41 @@ namespace EduConnect.Data.Migrations
                     b.Property<int>("StatisticsId")
                         .HasColumnType("int");
 
+                    b.HasIndex("StatisticsId");
+
                     b.ToTable("Tutor");
+                });
+
+            modelBuilder.Entity("EduConnect.Models.Appointment", b =>
+                {
+                    b.HasOne("EduConnect.Models.Bill", "Bill")
+                        .WithMany()
+                        .HasForeignKey("BillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EduConnect.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentUsername");
+
+                    b.HasOne("EduConnect.Models.Tutor", "Tutor")
+                        .WithMany()
+                        .HasForeignKey("TutorUsername");
+
+                    b.Navigation("Bill");
+
+                    b.Navigation("Student");
+
+                    b.Navigation("Tutor");
+                });
+
+            modelBuilder.Entity("EduConnect.Models.Course", b =>
+                {
+                    b.HasOne("EduConnect.Models.Tutor", "Tutor")
+                        .WithMany()
+                        .HasForeignKey("TutorUsername");
+
+                    b.Navigation("Tutor");
                 });
 
             modelBuilder.Entity("EduConnect.Models.Enrolment", b =>
@@ -407,6 +456,23 @@ namespace EduConnect.Data.Migrations
                         .HasForeignKey("StudentUsername");
 
                     b.Navigation("Course");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("EduConnect.Models.Reviews", b =>
+                {
+                    b.HasOne("EduConnect.Models.Statistics", "Statistics")
+                        .WithMany()
+                        .HasForeignKey("StatisticsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EduConnect.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentUsername");
+
+                    b.Navigation("Statistics");
 
                     b.Navigation("Student");
                 });
@@ -473,11 +539,19 @@ namespace EduConnect.Data.Migrations
 
             modelBuilder.Entity("EduConnect.Models.Tutor", b =>
                 {
+                    b.HasOne("EduConnect.Models.Statistics", "Statistics")
+                        .WithMany()
+                        .HasForeignKey("StatisticsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EduConnect.Models.User", null)
                         .WithOne()
                         .HasForeignKey("EduConnect.Models.Tutor", "Username")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
+
+                    b.Navigation("Statistics");
                 });
 #pragma warning restore 612, 618
         }

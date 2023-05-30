@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IcqdU8xM3cQUkFeKJjeLmc0mXOoiR8TYN8NWfFne44yC3XS1kxRqq+JYo4ieGCguV1zEZK0geXKtAmA+ZmTUFQ==",
+  "dgSpecHash": "Vx1+Ox9ildqna88KZ9CYGcy9ZnezjMUmQfREe6KFuMdz9hrCzzN3c/XaAow1ZAOZtth2ZF0Iqm9AKZtww7y6nA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DS User\\source\\repos\\EduConnect\\EduConnect\\EduConnect.csproj",
+  "projectFilePath": "C:\\Users\\DS User\\source\\repos\\OOAD Projekat verzija nakon db\\OOAD-G5-PowerPuffs\\EduConnect\\EduConnect.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DS User\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\DS User\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.17\\microsoft.aspnetcore.cryptography.internal.5.0.17.nupkg.sha512",
