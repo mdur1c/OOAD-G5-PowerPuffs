@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DS User\\source\\repos\\OOAD Projekat verzija nakon db\\OOAD-G5-PowerPuffs\\EduConnect\\EduConnect.csproj": {}
+    "C:\\Users\\pc\\source\\repos\\OOAD-G5-PowerPuffs\\EduConnect\\EduConnect.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DS User\\source\\repos\\OOAD Projekat verzija nakon db\\OOAD-G5-PowerPuffs\\EduConnect\\EduConnect.csproj": {
+    "C:\\Users\\pc\\source\\repos\\OOAD-G5-PowerPuffs\\EduConnect\\EduConnect.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DS User\\source\\repos\\OOAD Projekat verzija nakon db\\OOAD-G5-PowerPuffs\\EduConnect\\EduConnect.csproj",
+        "projectUniqueName": "C:\\Users\\pc\\source\\repos\\OOAD-G5-PowerPuffs\\EduConnect\\EduConnect.csproj",
         "projectName": "EduConnect",
-        "projectPath": "C:\\Users\\DS User\\source\\repos\\OOAD Projekat verzija nakon db\\OOAD-G5-PowerPuffs\\EduConnect\\EduConnect.csproj",
-        "packagesPath": "C:\\Users\\DS User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DS User\\source\\repos\\OOAD Projekat verzija nakon db\\OOAD-G5-PowerPuffs\\EduConnect\\obj\\",
+        "projectPath": "C:\\Users\\pc\\source\\repos\\OOAD-G5-PowerPuffs\\EduConnect\\EduConnect.csproj",
+        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pc\\source\\repos\\OOAD-G5-PowerPuffs\\EduConnect\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DS User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -16,47 +16,68 @@
 <body>
     <div class="center">
         <h1>Register</h1>
+
         <form method="post">
-            <div class="txt_field">
-                <input type="text" required>
-                <span></span>
-                <label>Name</label>
+            <div class="main_input">
+                <div class="left">
+
+                    <div class="txt_field">
+                        <input type="text" required>
+                        <span></span>
+                        <label>Name</label>
+                    </div>
+
+                    <div class="txt_field">
+                        <input type="email" required>
+                        <span></span>
+                        <label>Email</label>
+                    </div>
+
+                    <div class="txt_field">
+                        <input type="text" required>
+                        <span></span>
+                        <label>City</label>
+                    </div>
+                    <div class="txt_field">
+                        <input type="text" required>
+                        <span></span>
+                        <label>Username</label>
+                    </div>
+                    <div class="txt_field">
+                        <input type="password" required>
+                        <span></span>
+                        <label>Password</label>
+                    </div>
+
+
+                </div>
+                <div class="right">
+
+                    <div class="txt_field">
+                        <input type="text" required>
+                        <span></span>
+                        <label>Surname</label>
+                    </div>
+                    <div class="txt_field">
+                        <input type="tel" required>
+                        <span></span>
+                        <label>Phone Number</label>
+                    </div>
+
+                    <label for="upload" id="pic">
+                        Upload your profile photo :
+                        <img id="upload-icon" src="https://www.kindpng.com/picc/m/451-4517876_default-profile-hd-png-download.png" alt="Upload Icon">
+                    </label>
+                    <input type="file" name="picture" id="upload" accept="image/png, image/jpeg">
+                </div>
             </div>
-            <div class="txt_field">
-                <input type="text" required>
-                <span></span>
-                <label>Surname</label>
-            </div>
-            <div class="txt_field">
-                <input type="email" required>
-                <span></span>
-                <label>Email</label>
-            </div>
-            <div class="txt_field">
-                <input type="tel" required>
-                <span></span>
-                <label>Phone Number</label>
-            </div>
-            <div class="txt_field">
-                <input type="text" required>
-                <span></span>
-                <label>City</label>
-            </div>
-            <div class="txt_field">
-                <input type="text" required>
-                <span></span>
-                <label>Username</label>
-            </div>
-            <div class="txt_field">
-                <input type="password" required>
-                <span></span>
-                <label>Password</label>
-            </div>
-            <div class="signup_link">
-                Already a member? <a href="#">Login</a>
-            </div>
-            <input type="submit" value="Register">
         </form>
+
+        <div class="signup_link">
+            Already a member? <a href="#">Login</a>
+        </div>
+        <input type="submit" value="Register">
+
     </div>
 </body>
 </html>
