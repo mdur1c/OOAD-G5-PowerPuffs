@@ -391,3 +391,9 @@ C:\Users\DS User\source\repos\OOAD Projekat verzija nakon db\OOAD-G5-PowerPuffs\
 C:\Users\DS User\source\repos\OOAD Projekat verzija nakon db\OOAD-G5-PowerPuffs\EduConnect\obj\Debug\net5.0\EduConnect.pdb
 C:\Users\DS User\source\repos\OOAD Projekat verzija nakon db\OOAD-G5-PowerPuffs\EduConnect\obj\Debug\net5.0\EduConnect.genruntimeconfig.cache
 C:\Users\DS User\source\repos\OOAD Projekat verzija nakon db\OOAD-G5-PowerPuffs\EduConnect\obj\Debug\net5.0\ref\EduConnect.dll
+C:\Users\DS User\source\repos\OOAD Projekat verzija nakon db\OOAD-G5-PowerPuffs\EduConnect\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\Users\DS User\source\repos\OOAD Projekat verzija nakon db\OOAD-G5-PowerPuffs\EduConnect\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\DS User\source\repos\OOAD Projekat verzija nakon db\OOAD-G5-PowerPuffs\EduConnect\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\RegisterConfirmation.cshtml.g.cs
+C:\Users\DS User\source\repos\OOAD Projekat verzija nakon db\OOAD-G5-PowerPuffs\EduConnect\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\DS User\source\repos\OOAD Projekat verzija nakon db\OOAD-G5-PowerPuffs\EduConnect\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\DS User\source\repos\OOAD Projekat verzija nakon db\OOAD-G5-PowerPuffs\EduConnect\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
