@@ -25,6 +25,17 @@ namespace EduConnect
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+            .ConfigureServices((hostContext, services) =>
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(hostContext.Configuration.GetConnectionString("DefaultConnection")));
+
+                services.AddDefaultIdentity<IdentityUser>(options =>
+                {
+                    options.SignIn.RequireConfirmedAccount = true;
+                })
+                    .AddEntityFrameworkStores<ApplicationDbContext>();
+            });
     }
 }
