@@ -2,13 +2,17 @@
 
 namespace EduConnect.Models
 {
-    public class Tutor : User
+    public class Tutor: User
     {
+
         //[ForeignKey("Statistics")]
         public int StatisticsId { get; set; }
 
         // Navigation property
         public virtual Statistics Statistics { get; set; }
+
+        [ForeignKey("User")]
+        public string UserId { get; set; }
 
         public Tutor() { }
     }

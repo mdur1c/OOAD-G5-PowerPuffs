@@ -34,7 +34,7 @@ namespace EduConnect.Controllers
             }
 
             var tutor = await _context.Tutors
-                .FirstOrDefaultAsync(m => m.Username == id);
+                .FirstOrDefaultAsync(m => m.Loginname == id);
             if (tutor == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StatisticsId,Username,Password,Name,Surname,Email,PhoneNumber,City")] Tutor tutor)
+        public async Task<IActionResult> Create([Bind("StatisticsId,Loginname,Password,Name,Surname,EmailAddress,CellPhoneNumber,City")] Tutor tutor)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StatisticsId,Username,Password,Name,Surname,Email,PhoneNumber,City")] Tutor tutor)
+        public async Task<IActionResult> Edit(string id, [Bind("StatisticsId,Loginname,Password,Name,Surname,EmailAddress,CellPhoneNumber,City")] Tutor tutor)
         {
-            if (id != tutor.Username)
+            if (id != tutor.Loginname)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace EduConnect.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TutorExists(tutor.Username))
+                    if (!TutorExists(tutor.Loginname))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace EduConnect.Controllers
             }
 
             var tutor = await _context.Tutors
-                .FirstOrDefaultAsync(m => m.Username == id);
+                .FirstOrDefaultAsync(m => m.Loginname == id);
             if (tutor == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace EduConnect.Controllers
 
         private bool TutorExists(string id)
         {
-            return _context.Tutors.Any(e => e.Username == id);
+            return _context.Tutors.Any(e => e.Loginname == id);
         }
     }
 }

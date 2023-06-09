@@ -34,7 +34,7 @@ namespace EduConnect.Controllers
             }
 
             var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.Username == id);
+                .FirstOrDefaultAsync(m => m.Loginname == id);
             if (student == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Username,Password,Name,Surname,Email,PhoneNumber,City")] Student student)
+        public async Task<IActionResult> Create([Bind("Loginname,Password,Name,Surname,EmailAddress,CellPhoneNumber,City")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Username,Password,Name,Surname,Email,PhoneNumber,City")] Student student)
+        public async Task<IActionResult> Edit(string id, [Bind("Loginname,Password,Name,Surname,EmailAddress,CellPhoneNumber,City")] Student student)
         {
-            if (id != student.Username)
+            if (id != student.Loginname)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace EduConnect.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.Username))
+                    if (!StudentExists(student.Loginname))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace EduConnect.Controllers
             }
 
             var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.Username == id);
+                .FirstOrDefaultAsync(m => m.Loginname == id);
             if (student == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace EduConnect.Controllers
 
         private bool StudentExists(string id)
         {
-            return _context.Students.Any(e => e.Username == id);
+            return _context.Students.Any(e => e.Loginname == id);
         }
     }
 }
