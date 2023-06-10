@@ -21,31 +21,37 @@
                 <div class="left">
 
                     <div class="txt_field">
-                        <input type="text" required>
+                        <input type="text" asp-for="Input.Name" required>
                         <span></span>
-                        <label>Name</label>
+                        <label asp-for="Input.Name"></label>
                     </div>
 
                     <div class="txt_field">
-                        <input type="email" required>
+                        <input type="email" asp-for="Input.Email" required>
                         <span></span>
-                        <label>Email</label>
+                        <label asp-for="Input.Email"></label>
                     </div>
 
                     <div class="txt_field">
-                        <input type="text" required>
+                        <input type="text" asp-for="Input.City" required>
                         <span></span>
                         <label>City</label>
                     </div>
                     <div class="txt_field">
-                        <input type="text" required>
+                        <input type="text" asp-for="Input.LoginName" required>
                         <span></span>
                         <label>Username</label>
                     </div>
                     <div class="txt_field">
-                        <input type="password" required>
+                        <input type="password" asp-for="Input.Password" required>
                         <span></span>
                         <label>Password</label>
+                    </div>
+
+                    <div class="txt_field">
+                        <input type="password" asp-for="Input.ConfirmPassword" required>
+                        <span></span>
+                        <label asp-for="Input.ConfirmPassword"></label>
                     </div>
 
 
@@ -53,12 +59,12 @@
                 <div class="right">
 
                     <div class="txt_field">
-                        <input type="text" required>
+                        <input type="text" asp-for="Input.Surname" required>
                         <span></span>
                         <label>Surname</label>
                     </div>
                     <div class="txt_field">
-                        <input type="tel" required>
+                        <input type="tel" asp-for="Input.CellPhoneNumber" required>
                         <span></span>
                         <label>Phone Number</label>
                     </div>
