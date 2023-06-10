@@ -5,7 +5,7 @@ namespace EduConnect.Models
     public class Statistics
     {
 
-        [Key] public int Id { get; set; }
+        [Key] public string Id { get; set; }
 
         public Statistics() { }
     }

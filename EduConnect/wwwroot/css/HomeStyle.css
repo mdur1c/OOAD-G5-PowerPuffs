@@ -1,5 +1,6 @@
-﻿body {
+﻿﻿body {
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
 
 body {
@@ -59,40 +60,40 @@ body {
         justify-content: space-around;
     }
 
-    .achievements .work .work-icon {
-        width: 100px;
-        height: 100px;
-        border-radius: 10px;
-        background-color: #333333;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 20px;
-    }
-
-        .achievements .work .work-icon .icon-box {
-            width: 60px;
-            height: 60px;
-            background-color: #ffffff;
+        .achievements .work .work-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            background-color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
         }
 
-    .achievements .work .work-content {
-        display: flex;
-        flex-direction: column;
-    }
+            .achievements .work .work-icon .icon-box {
+                width: 60px;
+                height: 60px;
+                background-color: #ffffff;
+            }
 
-    .achievements .work .work-heading {
-        font-size: 20px;
-        color: #333333;
-        text-transform: uppercase;
-        margin: 10px 0;
-    }
+        .achievements .work .work-content {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .achievements .work .work-text {
-        font-size: 15px;
-        color: #585858;
-        margin: 10px 0;
-    }
+        .achievements .work .work-heading {
+            font-size: 20px;
+            color: #333333;
+            text-transform: uppercase;
+            margin: 10px 0;
+        }
+
+        .achievements .work .work-text {
+            font-size: 15px;
+            color: #585858;
+            margin: 10px 0;
+        }
 
 .why-us {
     display: flex;

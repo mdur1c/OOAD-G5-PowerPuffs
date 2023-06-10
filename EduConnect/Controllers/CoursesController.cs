@@ -22,11 +22,12 @@ namespace EduConnect.Controllers
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Courses.ToListAsync());
+            var applicationDbContext = _context.Courses.Include(c => c.Tutor);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Courses/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -34,6 +35,7 @@ namespace EduConnect.Controllers
             }
 
             var course = await _context.Courses
+                .Include(c => c.Tutor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (course == null)
             {
@@ -46,6 +48,7 @@ namespace EduConnect.Controllers
         // GET: Courses/Create
         public IActionResult Create()
         {
+            ViewData["TutorUsername"] = new SelectList(_context.Tutors, "Id", "Id");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Subject,Level,TutorUsername")] Course course)
+        public async Task<IActionResult> Create([Bind("Id,TutorUsername,Subject,Level")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -62,11 +65,12 @@ namespace EduConnect.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TutorUsername"] = new SelectList(_context.Tutors, "Id", "Id", course.TutorUsername);
             return View(course);
         }
 
         // GET: Courses/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -78,6 +82,7 @@ namespace EduConnect.Controllers
             {
                 return NotFound();
             }
+            ViewData["TutorUsername"] = new SelectList(_context.Tutors, "Id", "Id", course.TutorUsername);
             return View(course);
         }
 
@@ -86,7 +91,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Subject,Level,TutorUsername")] Course course)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,TutorUsername,Subject,Level")] Course course)
         {
             if (id != course.Id)
             {
@@ -113,11 +118,12 @@ namespace EduConnect.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TutorUsername"] = new SelectList(_context.Tutors, "Id", "Id", course.TutorUsername);
             return View(course);
         }
 
         // GET: Courses/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -125,6 +131,7 @@ namespace EduConnect.Controllers
             }
 
             var course = await _context.Courses
+                .Include(c => c.Tutor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (course == null)
             {
@@ -137,7 +144,7 @@ namespace EduConnect.Controllers
         // POST: Courses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var course = await _context.Courses.FindAsync(id);
             _context.Courses.Remove(course);
@@ -145,7 +152,7 @@ namespace EduConnect.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CourseExists(int id)
+        private bool CourseExists(string id)
         {
             return _context.Courses.Any(e => e.Id == id);
         }

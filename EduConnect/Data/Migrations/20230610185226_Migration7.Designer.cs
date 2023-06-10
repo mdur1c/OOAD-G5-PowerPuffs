@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduConnect.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230609224525_Migration3")]
-    partial class Migration3
+    [Migration("20230610185226_Migration7")]
+    partial class Migration7
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,13 +23,11 @@ namespace EduConnect.Migrations
 
             modelBuilder.Entity("EduConnect.Models.Appointment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("BillId")
-                        .HasColumnType("int");
+                    b.Property<string>("BillId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Day")
                         .HasColumnType("nvarchar(max)");
@@ -59,10 +57,8 @@ namespace EduConnect.Migrations
 
             modelBuilder.Entity("EduConnect.Models.Bill", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("CardNumber")
                         .HasColumnType("int");
@@ -83,10 +79,8 @@ namespace EduConnect.Migrations
 
             modelBuilder.Entity("EduConnect.Models.Course", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Level")
                         .HasColumnType("nvarchar(max)");
@@ -106,13 +100,11 @@ namespace EduConnect.Migrations
 
             modelBuilder.Entity("EduConnect.Models.Enrolment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
+                    b.Property<string>("CourseId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("StudentUsername")
                         .HasColumnType("nvarchar(450)");
@@ -128,10 +120,8 @@ namespace EduConnect.Migrations
 
             modelBuilder.Entity("EduConnect.Models.Reviews", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
@@ -139,8 +129,8 @@ namespace EduConnect.Migrations
                     b.Property<double>("Rate")
                         .HasColumnType("float");
 
-                    b.Property<int>("StatisticsId")
-                        .HasColumnType("int");
+                    b.Property<string>("StatisticsId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("StudentUsername")
                         .HasColumnType("nvarchar(450)");
@@ -156,10 +146,8 @@ namespace EduConnect.Migrations
 
             modelBuilder.Entity("EduConnect.Models.Statistics", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -174,9 +162,6 @@ namespace EduConnect.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("CellPhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
@@ -188,23 +173,20 @@ namespace EduConnect.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("EmailAddress")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Loginname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -213,9 +195,6 @@ namespace EduConnect.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -227,9 +206,6 @@ namespace EduConnect.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -391,8 +367,8 @@ namespace EduConnect.Migrations
                 {
                     b.HasBaseType("EduConnect.Models.User");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.ToTable("Student");
                 });
@@ -401,11 +377,8 @@ namespace EduConnect.Migrations
                 {
                     b.HasBaseType("EduConnect.Models.User");
 
-                    b.Property<int>("StatisticsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("StatisticsId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasIndex("StatisticsId");
 
@@ -416,9 +389,7 @@ namespace EduConnect.Migrations
                 {
                     b.HasOne("EduConnect.Models.Bill", "Bill")
                         .WithMany()
-                        .HasForeignKey("BillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BillId");
 
                     b.HasOne("EduConnect.Models.Student", "Student")
                         .WithMany()
@@ -448,9 +419,7 @@ namespace EduConnect.Migrations
                 {
                     b.HasOne("EduConnect.Models.Course", "Course")
                         .WithMany()
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CourseId");
 
                     b.HasOne("EduConnect.Models.Student", "Student")
                         .WithMany()
@@ -465,9 +434,7 @@ namespace EduConnect.Migrations
                 {
                     b.HasOne("EduConnect.Models.Statistics", "Statistics")
                         .WithMany()
-                        .HasForeignKey("StatisticsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StatisticsId");
 
                     b.HasOne("EduConnect.Models.Student", "Student")
                         .WithMany()
@@ -548,9 +515,7 @@ namespace EduConnect.Migrations
 
                     b.HasOne("EduConnect.Models.Statistics", "Statistics")
                         .WithMany()
-                        .HasForeignKey("StatisticsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StatisticsId");
 
                     b.Navigation("Statistics");
                 });

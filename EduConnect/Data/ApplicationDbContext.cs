@@ -14,6 +14,7 @@ namespace EduConnect.Data
         {
         }
 
+        public DbSet<User> User { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Tutor> Tutors { get; set; }
         public DbSet<Course> Courses { get; set; }
@@ -23,10 +24,12 @@ namespace EduConnect.Data
         public DbSet<Reviews> Reviews { get; set; }
         public DbSet<Enrolment> Enrolments { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Student>().ToTable("Student");
             modelBuilder.Entity<Tutor>().ToTable("Tutor");
+            modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Course>().ToTable("Course");
             modelBuilder.Entity<Enrolment>().ToTable("Enrolment");
             modelBuilder.Entity<Appointment>().ToTable("Appointment");
@@ -34,14 +37,12 @@ namespace EduConnect.Data
             modelBuilder.Entity<Statistics>().ToTable("Statistics");
             modelBuilder.Entity<Reviews>().ToTable("Reviews");
 
-            modelBuilder.Entity<User>().Property(e => e.Loginname);
-            modelBuilder.Entity<User>().Property(e => e.Password);
-            modelBuilder.Entity<User>().Property(e => e.Name);
-            modelBuilder.Entity<User>().Property(e => e.Surname);
-            modelBuilder.Entity<User>().Property(e => e.EmailAddress);
-            modelBuilder.Entity<User>().Property(e => e.CellPhoneNumber);
+            modelBuilder.Entity<User>().Property(e => e.Id);
+            modelBuilder.Entity<User>().Property(e => e.FirstName);
+            modelBuilder.Entity<User>().Property(e => e.LastName);
+            modelBuilder.Entity<User>().Property(e => e.UserName);
+            modelBuilder.Entity<User>().Property(e => e.Email);
             modelBuilder.Entity<User>().Property(e => e.City);
-
 
             base.OnModelCreating(modelBuilder);
         }

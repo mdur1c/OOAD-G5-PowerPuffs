@@ -22,11 +22,12 @@ namespace EduConnect.Controllers
         // GET: Reviews
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Reviews.ToListAsync());
+            var applicationDbContext = _context.Reviews.Include(r => r.Statistics).Include(r => r.Student);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Reviews/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -34,6 +35,8 @@ namespace EduConnect.Controllers
             }
 
             var reviews = await _context.Reviews
+                .Include(r => r.Statistics)
+                .Include(r => r.Student)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reviews == null)
             {
@@ -46,6 +49,8 @@ namespace EduConnect.Controllers
         // GET: Reviews/Create
         public IActionResult Create()
         {
+            ViewData["StatisticsId"] = new SelectList(_context.Statistics, "Id", "Id");
+            ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id");
             return View();
         }
 
@@ -54,7 +59,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Rate,Comment,StudentUsername")] Reviews reviews)
+        public async Task<IActionResult> Create([Bind("Id,StudentUsername,StatisticsId,Rate,Comment")] Reviews reviews)
         {
             if (ModelState.IsValid)
             {
@@ -62,11 +67,13 @@ namespace EduConnect.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["StatisticsId"] = new SelectList(_context.Statistics, "Id", "Id", reviews.StatisticsId);
+            ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id", reviews.StudentUsername);
             return View(reviews);
         }
 
         // GET: Reviews/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -78,6 +85,8 @@ namespace EduConnect.Controllers
             {
                 return NotFound();
             }
+            ViewData["StatisticsId"] = new SelectList(_context.Statistics, "Id", "Id", reviews.StatisticsId);
+            ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id", reviews.StudentUsername);
             return View(reviews);
         }
 
@@ -86,7 +95,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Rate,Comment,StudentUsername")] Reviews reviews)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,StudentUsername,StatisticsId,Rate,Comment")] Reviews reviews)
         {
             if (id != reviews.Id)
             {
@@ -113,11 +122,13 @@ namespace EduConnect.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["StatisticsId"] = new SelectList(_context.Statistics, "Id", "Id", reviews.StatisticsId);
+            ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id", reviews.StudentUsername);
             return View(reviews);
         }
 
         // GET: Reviews/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -125,6 +136,8 @@ namespace EduConnect.Controllers
             }
 
             var reviews = await _context.Reviews
+                .Include(r => r.Statistics)
+                .Include(r => r.Student)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reviews == null)
             {
@@ -137,7 +150,7 @@ namespace EduConnect.Controllers
         // POST: Reviews/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var reviews = await _context.Reviews.FindAsync(id);
             _context.Reviews.Remove(reviews);
@@ -145,7 +158,7 @@ namespace EduConnect.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ReviewsExists(int id)
+        private bool ReviewsExists(string id)
         {
             return _context.Reviews.Any(e => e.Id == id);
         }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using EduConnect.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using EduConnect.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -47,10 +47,6 @@ namespace EduConnect.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name = "Username")]
-            public string LoginName { get; set; }
-
-            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -65,23 +61,6 @@ namespace EduConnect.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
-
-            [Required]
-            [Display(Name = "Name")]
-            public string Name { get; set; }
-
-            [Required]
-            [Display(Name = "Surname")]
-            public string Surname { get; set; }
-
-            [Required]
-            [Display(Name = "Phone Number")]
-            public string CellPhoneNumber { get; set; }
-
-            [Required]
-            [Display(Name = "City")]
-            public string City { get; set; }
-
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -96,8 +75,7 @@ namespace EduConnect.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Email, Email = Input.Email, Loginname = Input.LoginName, Password = Input.Password,
-                EmailAddress = Input.Email, Name = Input.Name, Surname = Input.Surname, CellPhoneNumber = Input.CellPhoneNumber, City = Input.City };
+                var user = new User { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

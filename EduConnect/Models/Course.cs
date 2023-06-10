@@ -5,7 +5,7 @@ namespace EduConnect.Models
 {
     public class Course
     {
-        [Key] public int Id { get; set; }
+        [Key] public string Id { get; set; }
 
         [ForeignKey("Tutor")] public string TutorUsername { get; set; }
 
@@ -13,7 +13,7 @@ namespace EduConnect.Models
         public string Level { get; set; }
 
         // Navigation properties
-        public virtual Tutor Tutor { get; set; }
+        public Tutor Tutor { get; set; }
 
         public Course() { }
     }

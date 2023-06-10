@@ -6,13 +6,13 @@ namespace EduConnect.Models
 {
     public class User : IdentityUser
     {
-        public string Loginname { get; set; } //username
-        public string Password { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string EmailAddress { get; set; }
-        public string CellPhoneNumber { get; set; }
+        [Key] override public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        override public string UserName { get; set; }
+        override public string Email { get; set; }
         public string City { get; set; }
+
         public User() { }
     }
 }

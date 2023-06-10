@@ -6,19 +6,18 @@ namespace EduConnect.Models
     public class Reviews
     {
 
-        [Key] public int Id { get; set; }
+        [Key] public string Id { get; set; }
 
         [ForeignKey("Student")] public string StudentUsername { get; set; }
 
-        //[ForeignKey("Statistics")]
-        public int StatisticsId { get; set; }
+        [ForeignKey("Statistics")] public string StatisticsId { get; set; }
 
         public double Rate { get; set; }
         public string Comment { get; set; }
 
         // Navigation properties
-        public virtual Statistics Statistics { get; set; }
-        public virtual Student Student { get; set; }
+        public Statistics Statistics { get; set; }
+        public Student Student { get; set; }
 
         public Reviews() { }
     }

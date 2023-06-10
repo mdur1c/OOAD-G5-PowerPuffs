@@ -26,7 +26,7 @@ namespace EduConnect.Controllers
         }
 
         // GET: Bills/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -66,7 +66,7 @@ namespace EduConnect.Controllers
         }
 
         // GET: Bills/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -86,7 +86,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,CardNumber,Discount,Status")] Bill bill)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Price,CardNumber,Discount,Status")] Bill bill)
         {
             if (id != bill.Id)
             {
@@ -117,7 +117,7 @@ namespace EduConnect.Controllers
         }
 
         // GET: Bills/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -137,7 +137,7 @@ namespace EduConnect.Controllers
         // POST: Bills/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var bill = await _context.Bills.FindAsync(id);
             _context.Bills.Remove(bill);
@@ -145,7 +145,7 @@ namespace EduConnect.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BillExists(int id)
+        private bool BillExists(string id)
         {
             return _context.Bills.Any(e => e.Id == id);
         }

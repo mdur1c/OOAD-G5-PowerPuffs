@@ -14,6 +14,16 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
+                <label asp-for="StudentUsername" class="control-label"></label>
+                <select asp-for="StudentUsername" class="form-control" asp-items="ViewBag.StudentUsername"></select>
+                <span asp-validation-for="StudentUsername" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatisticsId" class="control-label"></label>
+                <select asp-for="StatisticsId" class="form-control" asp-items="ViewBag.StatisticsId"></select>
+                <span asp-validation-for="StatisticsId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Rate" class="control-label"></label>
                 <input asp-for="Rate" class="form-control" />
                 <span asp-validation-for="Rate" class="text-danger"></span>
@@ -22,11 +32,6 @@
                 <label asp-for="Comment" class="control-label"></label>
                 <input asp-for="Comment" class="form-control" />
                 <span asp-validation-for="Comment" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentUsername" class="control-label"></label>
-                <input asp-for="StudentUsername" class="form-control" />
-                <span asp-validation-for="StudentUsername" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -22,11 +22,12 @@ namespace EduConnect.Controllers
         // GET: Appointments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Appointments.ToListAsync());
+            var applicationDbContext = _context.Appointments.Include(a => a.Student).Include(a => a.Tutor);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Appointments/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -34,6 +35,8 @@ namespace EduConnect.Controllers
             }
 
             var appointment = await _context.Appointments
+                .Include(a => a.Student)
+                .Include(a => a.Tutor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (appointment == null)
             {
@@ -46,6 +49,8 @@ namespace EduConnect.Controllers
         // GET: Appointments/Create
         public IActionResult Create()
         {
+            ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id");
+            ViewData["TutorUsername"] = new SelectList(_context.Tutors, "Id", "Id");
             return View();
         }
 
@@ -54,7 +59,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Price,Time,Day,BillId,TutorUsername,StudentUsername")] Appointment appointment)
+        public async Task<IActionResult> Create([Bind("Id,TutorUsername,StudentUsername,Price,Time,Day")] Appointment appointment)
         {
             if (ModelState.IsValid)
             {
@@ -62,11 +67,13 @@ namespace EduConnect.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id", appointment.StudentUsername);
+            ViewData["TutorUsername"] = new SelectList(_context.Tutors, "Id", "Id", appointment.TutorUsername);
             return View(appointment);
         }
 
         // GET: Appointments/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -78,6 +85,8 @@ namespace EduConnect.Controllers
             {
                 return NotFound();
             }
+            ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id", appointment.StudentUsername);
+            ViewData["TutorUsername"] = new SelectList(_context.Tutors, "Id", "Id", appointment.TutorUsername);
             return View(appointment);
         }
 
@@ -86,7 +95,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,Time,Day,BillId,TutorUsername,StudentUsername")] Appointment appointment)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,TutorUsername,StudentUsername,Price,Time,Day")] Appointment appointment)
         {
             if (id != appointment.Id)
             {
@@ -113,11 +122,13 @@ namespace EduConnect.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id", appointment.StudentUsername);
+            ViewData["TutorUsername"] = new SelectList(_context.Tutors, "Id", "Id", appointment.TutorUsername);
             return View(appointment);
         }
 
         // GET: Appointments/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -125,6 +136,8 @@ namespace EduConnect.Controllers
             }
 
             var appointment = await _context.Appointments
+                .Include(a => a.Student)
+                .Include(a => a.Tutor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (appointment == null)
             {
@@ -137,7 +150,7 @@ namespace EduConnect.Controllers
         // POST: Appointments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var appointment = await _context.Appointments.FindAsync(id);
             _context.Appointments.Remove(appointment);
@@ -145,7 +158,7 @@ namespace EduConnect.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AppointmentExists(int id)
+        private bool AppointmentExists(string id)
         {
             return _context.Appointments.Any(e => e.Id == id);
         }

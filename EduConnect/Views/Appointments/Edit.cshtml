@@ -14,6 +14,16 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
+                <label asp-for="TutorUsername" class="control-label"></label>
+                <select asp-for="TutorUsername" class="form-control" asp-items="ViewBag.TutorUsername"></select>
+                <span asp-validation-for="TutorUsername" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentUsername" class="control-label"></label>
+                <select asp-for="StudentUsername" class="form-control" asp-items="ViewBag.StudentUsername"></select>
+                <span asp-validation-for="StudentUsername" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
@@ -27,21 +37,6 @@
                 <label asp-for="Day" class="control-label"></label>
                 <input asp-for="Day" class="form-control" />
                 <span asp-validation-for="Day" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BillId" class="control-label"></label>
-                <input asp-for="BillId" class="form-control" />
-                <span asp-validation-for="BillId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TutorUsername" class="control-label"></label>
-                <input asp-for="TutorUsername" class="form-control" />
-                <span asp-validation-for="TutorUsername" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentUsername" class="control-label"></label>
-                <input asp-for="StudentUsername" class="form-control" />
-                <span asp-validation-for="StudentUsername" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

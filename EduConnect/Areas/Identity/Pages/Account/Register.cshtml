@@ -1,91 +1,66 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "EduConnect";
+    ViewData["Title"] = "Register";
 }
 
+<h1>@ViewData["Title"]</h1>
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="~/css/RegisterStyle.css" />
-</head>
-<body>
-    <div class="center">
-        <h1>Register</h1>
-
-        <form method="post">
-            <div class="main_input">
-                <div class="left">
-
-                    <div class="txt_field">
-                        <input type="text" asp-for="Input.Name" required>
-                        <span></span>
-                        <label asp-for="Input.Name"></label>
-                    </div>
-
-                    <div class="txt_field">
-                        <input type="email" asp-for="Input.Email" required>
-                        <span></span>
-                        <label asp-for="Input.Email"></label>
-                    </div>
-
-                    <div class="txt_field">
-                        <input type="text" asp-for="Input.City" required>
-                        <span></span>
-                        <label>City</label>
-                    </div>
-                    <div class="txt_field">
-                        <input type="text" asp-for="Input.LoginName" required>
-                        <span></span>
-                        <label>Username</label>
-                    </div>
-                    <div class="txt_field">
-                        <input type="password" asp-for="Input.Password" required>
-                        <span></span>
-                        <label>Password</label>
-                    </div>
-
-                    <div class="txt_field">
-                        <input type="password" asp-for="Input.ConfirmPassword" required>
-                        <span></span>
-                        <label asp-for="Input.ConfirmPassword"></label>
-                    </div>
-
-
-                </div>
-                <div class="right">
-
-                    <div class="txt_field">
-                        <input type="text" asp-for="Input.Surname" required>
-                        <span></span>
-                        <label>Surname</label>
-                    </div>
-                    <div class="txt_field">
-                        <input type="tel" asp-for="Input.CellPhoneNumber" required>
-                        <span></span>
-                        <label>Phone Number</label>
-                    </div>
-
-                    <label for="upload" id="pic">
-                        Upload your profile photo :
-                        <img id="upload-icon" src="https://www.kindpng.com/picc/m/451-4517876_default-profile-hd-png-download.png" alt="Upload Icon">
-                    </label>
-                    <input type="file" name="picture" id="upload" accept="image/png, image/jpeg">
-                </div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
         </form>
-
-        <div class="signup_link">
-            Already a member? <a href="#">Login</a>
-        </div>
-        <input type="submit" value="Register">
-
     </div>
-</body>
-</html>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to register.</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

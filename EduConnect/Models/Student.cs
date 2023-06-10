@@ -1,12 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduConnect.Models
 {
     public class Student: User
     {
-
-        [ForeignKey("User")]
-        public string UserId { get; set; }
+        public int Year { get; set; }
 
         public Student() { }
     }

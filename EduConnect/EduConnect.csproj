@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-EduConnect-467ab42e-2b13-4def-a735-a9ed2ea75019</UserSecretsId>
+    <UserSecretsId>aspnet-EduConnect-a0c74404-2118-4849-8f16-673abf6df477</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\HomeStyle.css" />
+    <Content Remove="wwwroot\css\StyleSheet.css" />
   </ItemGroup>
 
   <ItemGroup>
