@@ -1,19 +1,12 @@
 using EduConnect.Data;
-using EduConnect.Models;
 using EduConnect.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EduConnect
 {
@@ -34,7 +27,8 @@ namespace EduConnect
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => {
+            services.AddDefaultIdentity<IdentityUser>(options =>
+            {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.Password.RequireDigit = true;
                 options.Password.RequiredLength = 5;
@@ -49,6 +43,8 @@ namespace EduConnect
             services.AddMvc();
             services.AddTransient<UserManager<IdentityUser>>();
             services.AddTransient<IAppointmentsManager, AppointmentsManager>();
+            services.AddTransient<IReviewsManager, ReviewsManager>();
+
 
             services.AddTransient<ICourseManager, CourseManager>();
             services.AddControllersWithViews();

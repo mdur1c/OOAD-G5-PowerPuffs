@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<EduConnect.Models.Reviews>
-
+@using EduConnect.Services
+@using Microsoft.AspNetCore.Identity
+@using System.Web
+@inject IReviewsManager reviewsManager
 @{
     ViewData["Title"] = "Index";
+    var rManager = await reviewsManager.GetReviewsByCurrentPerformer();
 }
+<link rel="stylesheet" href="~/css/StudentHome.css" />
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -21,33 +21,25 @@
             <th>
                 @Html.DisplayNameFor(model => model.Student)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tutor)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tutor.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in rManager)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.FirstName)
+                    @Html.DisplayFor(modelItem => item.Student.LastName)
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -1,5 +1,3 @@
-using System;
-
 namespace EduConnect.Models
 {
     public class ErrorViewModel
