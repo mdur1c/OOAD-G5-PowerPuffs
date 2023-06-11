@@ -4,14 +4,16 @@ using EduConnect.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EduConnect.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230611201013_Migration10")]
+    partial class Migration10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,14 +138,9 @@ namespace EduConnect.Migrations
                     b.Property<string>("StudentUsername")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("TutorId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("StudentUsername");
-
-                    b.HasIndex("TutorId");
 
                     b.ToTable("Reviews");
                 });
@@ -461,13 +458,7 @@ namespace EduConnect.Migrations
                         .WithMany()
                         .HasForeignKey("StudentUsername");
 
-                    b.HasOne("EduConnect.Models.Tutor", "Tutor")
-                        .WithMany()
-                        .HasForeignKey("TutorId");
-
                     b.Navigation("Student");
-
-                    b.Navigation("Tutor");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

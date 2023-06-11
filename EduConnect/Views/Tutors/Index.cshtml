@@ -22,15 +22,18 @@
             {
                 <div class="profile-card">
                     <div class="profile-image">
-                        <img src=@item.Image>
+                        <img src=@item.Image class="profile-thumb" alt="">
                         <a class="card-btn" asp-action="Details" asp-route-id="@item.Id">View profile</a>
                     </div>
+
                     <div class="profile-info">
 
-                        <h5>@Html.DisplayFor(modelItem => item.UserName)</h5>
-
-                        <p class="profile-short-description">Opis</p>
+                        <h5>@Html.DisplayFor(modelItem => item.FirstName)</h5>
+                        <h5>@Html.DisplayFor(modelItem => item.LastName)</h5>
+                        <h5>@Html.DisplayFor(modelItem => item.City)</h5>
                     </div>
+
+
                 </div>
             }
 

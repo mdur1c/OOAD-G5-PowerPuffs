@@ -1,53 +1,39 @@
 ﻿@model IEnumerable<EduConnect.Models.Course>
-
+@using EduConnect.Services
+@using Microsoft.AspNetCore.Identity
+@using System.Web
+@inject ICourseManager courseManager
 @{
     ViewData["Title"] = "Index";
+    var cManager = await courseManager.GetCoursesByCurrentPerformer();
 }
 
-<h1>Index</h1>
+<h1>My Courses</h1>
+<link rel="stylesheet" href="~/css/StudentHome.css" />
+<body>
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Add new courses</a>
+    </p>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Subject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Level)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tutor)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Level)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tutor.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+    <button class="pre-btn"><img src="/img/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="/img/arrow.png" alt=""></button>
+
+    <div id="profile-container">
+        @foreach (var item in cManager)
+        {
+
+            <div class="appointment-card">
+
+                <p>@Html.DisplayNameFor(model => model.Subject) :@Html.DisplayFor(modelItem => item.Subject)</p>
+                <p> @Html.DisplayNameFor(model => model.Level) :@Html.DisplayFor(modelItem => item.Level)</p>
+                <p>@Html.DisplayNameFor(model => model.Price) :@Html.DisplayFor(modelItem => item.Price)</p>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </div>
+
+        }
+    </div>
+    <script src="/js/StudentHome.js"></script>
+</body>
+

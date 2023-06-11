@@ -20,7 +20,6 @@ namespace EduConnect.Data
         public DbSet<Course> Courses { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Bill> Bills { get; set; }
-        public DbSet<Statistics> Statistics { get; set; }
         public DbSet<Reviews> Reviews { get; set; }
         public DbSet<Enrolment> Enrolments { get; set; }
 
@@ -33,7 +32,6 @@ namespace EduConnect.Data
             modelBuilder.Entity<Enrolment>().ToTable("Enrolment");
             modelBuilder.Entity<Appointment>().ToTable("Appointment");
             modelBuilder.Entity<Bill>().ToTable("Bill");
-            modelBuilder.Entity<Statistics>().ToTable("Statistics");
             modelBuilder.Entity<Reviews>().ToTable("Reviews");
 
             base.OnModelCreating(modelBuilder);

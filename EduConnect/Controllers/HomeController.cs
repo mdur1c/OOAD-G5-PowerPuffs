@@ -47,7 +47,7 @@ namespace EduConnect.Controllers
 
         public async Task<IActionResult> StudentHome()
         {
-            return View(await _context.Tutors.ToListAsync());
+            return View();
         }
 
         public async Task<IActionResult> TutorHome()

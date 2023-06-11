@@ -46,9 +46,17 @@ namespace EduConnect
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddMvc();
+            services.AddTransient<UserManager<IdentityUser>>();
             services.AddTransient<IAppointmentsManager, AppointmentsManager>();
 
+            services.AddTransient<ICourseManager, CourseManager>();
+            services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
+
+
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

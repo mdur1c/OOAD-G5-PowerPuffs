@@ -22,7 +22,7 @@ namespace EduConnect.Controllers
         // GET: Reviews
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Reviews.Include(r => r.Statistics).Include(r => r.Student);
+            var applicationDbContext = _context.Reviews.Include(r => r.Student).Include(r => r.Tutor);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,8 +35,8 @@ namespace EduConnect.Controllers
             }
 
             var reviews = await _context.Reviews
-                .Include(r => r.Statistics)
                 .Include(r => r.Student)
+                .Include(r => r.Tutor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reviews == null)
             {
@@ -49,8 +49,8 @@ namespace EduConnect.Controllers
         // GET: Reviews/Create
         public IActionResult Create()
         {
-            ViewData["StatisticsId"] = new SelectList(_context.Statistics, "Id", "Id");
             ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id");
+            ViewData["TutorId"] = new SelectList(_context.Tutors, "Id", "Id");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,StudentUsername,StatisticsId,Rate,Comment")] Reviews reviews)
+        public async Task<IActionResult> Create([Bind("Id,StudentUsername,TutorId,Rate,Comment")] Reviews reviews)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +67,8 @@ namespace EduConnect.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StatisticsId"] = new SelectList(_context.Statistics, "Id", "Id", reviews.StatisticsId);
             ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id", reviews.StudentUsername);
+            ViewData["TutorId"] = new SelectList(_context.Tutors, "Id", "Id", reviews.TutorId);
             return View(reviews);
         }
 
@@ -85,8 +85,8 @@ namespace EduConnect.Controllers
             {
                 return NotFound();
             }
-            ViewData["StatisticsId"] = new SelectList(_context.Statistics, "Id", "Id", reviews.StatisticsId);
             ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id", reviews.StudentUsername);
+            ViewData["TutorId"] = new SelectList(_context.Tutors, "Id", "Id", reviews.TutorId);
             return View(reviews);
         }
 
@@ -95,7 +95,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,StudentUsername,StatisticsId,Rate,Comment")] Reviews reviews)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,StudentUsername,TutorId,Rate,Comment")] Reviews reviews)
         {
             if (id != reviews.Id)
             {
@@ -122,8 +122,8 @@ namespace EduConnect.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StatisticsId"] = new SelectList(_context.Statistics, "Id", "Id", reviews.StatisticsId);
             ViewData["StudentUsername"] = new SelectList(_context.Students, "Id", "Id", reviews.StudentUsername);
+            ViewData["TutorId"] = new SelectList(_context.Tutors, "Id", "Id", reviews.TutorId);
             return View(reviews);
         }
 
@@ -136,8 +136,8 @@ namespace EduConnect.Controllers
             }
 
             var reviews = await _context.Reviews
-                .Include(r => r.Statistics)
                 .Include(r => r.Student)
+                .Include(r => r.Tutor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reviews == null)
             {

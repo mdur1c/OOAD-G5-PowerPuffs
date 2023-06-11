@@ -14,7 +14,7 @@
 
 
 <body>
-
+    <a class="btn btn-primary" asp-controller="Courses" asp-action="Index">View my account</a>
     <section class="profile">
         <div class="naslov">
             <h1><span class="recommended">All of your appointments</span></h1>
@@ -31,10 +31,7 @@
                     <p>@Html.DisplayNameFor(model => model.Price) :@Html.DisplayFor(modelItem => item.Price)</p>
                     <p> @Html.DisplayNameFor(model => model.Time) :@Html.DisplayFor(modelItem => item.Time)</p>
                     <p>@Html.DisplayNameFor(model => model.Day) :@Html.DisplayFor(modelItem => item.Day)</p>
-                    <p>@Html.DisplayFor(modelItem => item.Accepted)</p>
-                    <p>@Html.DisplayFor(modelItem => item.Tutor.Id)</p>
-                    <p>@Html.DisplayNameFor(model => model.Student) :@Html.DisplayFor(modelItem => item.Student.Id)</p>
-
+                    <a asp-action="Details" asp-route-id="@item.Id">Accept or decline appointment</a>
                 </div>
             }
 

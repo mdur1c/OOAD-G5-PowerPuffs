@@ -13,10 +13,6 @@ namespace EduConnect.Models
         public string City { get; set; }
         public string Image { get; set; }
         public string CV { get; set; }
-
-        // Navigation property
-        public Statistics Statistics { get; set; }
-
         public Tutor() { }
     }
 }

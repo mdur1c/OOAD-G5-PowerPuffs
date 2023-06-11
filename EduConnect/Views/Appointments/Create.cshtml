@@ -3,12 +3,10 @@
 @{
     ViewData["Title"] = "Create";
 }
+<link rel="stylesheet" href="~/css/StudentHome.css" />
 
-<h1>Create</h1>
-
-<h4>Appointment</h4>
-<hr />
-<div class="row">
+<div class="row" style="background-color:white; border-radius:15px; padding:15px;">
+    <h4>Appointment</h4>
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -19,11 +17,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="TutorUsername" class="control-label"></label>
-                <select asp-for="TutorUsername" class ="form-control" asp-items="ViewBag.TutorUsername"></select>
+                <select asp-for="TutorUsername" class="form-control" asp-items="ViewBag.TutorUsername"></select>
             </div>
             <div class="form-group">
                 <label asp-for="StudentUsername" class="control-label"></label>
-                <select asp-for="StudentUsername" class ="form-control" asp-items="ViewBag.StudentUsername"></select>
+                <select asp-for="StudentUsername" class="form-control" asp-items="ViewBag.StudentUsername"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
@@ -57,5 +55,9 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+
