@@ -1,65 +1,46 @@
 ﻿@model IEnumerable<EduConnect.Models.Appointment>
+@using EduConnect.Services
+@using Microsoft.AspNetCore.Identity
+@using System.Web
+
+@inject IAppointmentsManager appointmentManager
 
 @{
     ViewData["Title"] = "Index";
+    var aManager = await appointmentManager.GetAppointmentsByCurrentPerformer();
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/StudentHome.css" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Time)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Day)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Accepted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tutor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Day)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Accepted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tutor.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<body>
+
+    <section class="profile">
+        <div class="naslov">
+            <h1><span class="recommended">All of your appointments</span></h1>
+        </div>
+        <button class="pre-btn"><img src="/img/arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="/img/arrow.png" alt=""></button>
+
+        <div id="profile-container">
+            @foreach (var item in aManager)
+            {
+
+                <div class="appointment-card">
+
+                    <p>@Html.DisplayNameFor(model => model.Price) :@Html.DisplayFor(modelItem => item.Price)</p>
+                    <p> @Html.DisplayNameFor(model => model.Time) :@Html.DisplayFor(modelItem => item.Time)</p>
+                    <p>@Html.DisplayNameFor(model => model.Day) :@Html.DisplayFor(modelItem => item.Day)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Accepted)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Tutor.Id)</p>
+                    <p>@Html.DisplayNameFor(model => model.Student) :@Html.DisplayFor(modelItem => item.Student.Id)</p>
+
+                </div>
+            }
+
+        </div>
+    </section>
+
+    <script src="/js/StudentHome.js"></script>
+</body>
+

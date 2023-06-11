@@ -1,5 +1,6 @@
 using EduConnect.Data;
 using EduConnect.Models;
+using EduConnect.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -45,6 +46,7 @@ namespace EduConnect
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddTransient<IAppointmentsManager, AppointmentsManager>();
 
         }
 
