@@ -8,15 +8,20 @@ using Microsoft.EntityFrameworkCore;
 using EduConnect.Data;
 using EduConnect.Models;
 
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+
 namespace EduConnect.Controllers
 {
     public class StudentsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public StudentsController(ApplicationDbContext context)
+        public StudentsController(ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Students
@@ -58,6 +63,7 @@ namespace EduConnect.Controllers
         {
             if (ModelState.IsValid)
             {
+                await _userManager.AddToRoleAsync(student, "Student");
                 _context.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

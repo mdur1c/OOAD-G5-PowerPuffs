@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EduConnect.Data;
 using EduConnect.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace EduConnect.Controllers
 {
     public class TutorsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public TutorsController(ApplicationDbContext context)
+
+        public TutorsController(ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Tutors
@@ -58,6 +62,7 @@ namespace EduConnect.Controllers
         {
             if (ModelState.IsValid)
             {
+                await _userManager.AddToRoleAsync(tutor, "Tutor");
                 _context.Add(tutor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

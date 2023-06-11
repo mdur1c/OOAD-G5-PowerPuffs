@@ -1,4 +1,7 @@
-﻿using EduConnect.Models;
+﻿using EduConnect.Data;
+using EduConnect.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,14 +15,43 @@ namespace EduConnect.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext applicationDbContext, UserManager<User> userManager)
         {
             _logger = logger;
+            _context = applicationDbContext;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+
+        public async Task<IActionResult> Index()
         {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return View() as IActionResult;
+            var roles = await _userManager.GetRolesAsync(user);
+            var role = roles[0];
+            if (role == "Student")
+            {
+                return RedirectToAction(nameof(StudentHome));
+            }
+            else if (role == "Tutor")
+            {
+                return RedirectToAction(nameof(TutorHome));
+            }
+            else return View() as IActionResult;
+        }
+
+        public async Task<IActionResult> StudentHome()
+        {
+
+            return View();
+        }
+
+        public async Task<IActionResult> TutorHome()
+        {
+
             return View();
         }
 
