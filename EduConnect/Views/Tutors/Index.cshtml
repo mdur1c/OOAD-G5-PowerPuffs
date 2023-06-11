@@ -3,57 +3,40 @@
 @{
     ViewData["Title"] = "Index";
 }
+<link rel="stylesheet" href="~/css/StudentHome.css" />
 
-<h1>Index</h1>
+<body>
+    <div class="input-group">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+        <button type="button" class="btn btn-outline-primary">search</button>
+        <button type="button" class="btn btn-outline-primary">Filter</button>
+    </div>
+    <section class="profile">
+        <div class="naslov">
+            <h1><span class="recommended">Recommended</span></h1>
+        </div>
+        <button class="pre-btn"><img src="/img/arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="/img/arrow.png" alt=""></button>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <div id="profile-container">
+            @foreach (var item in Model)
+            {
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://th.bing.com/th/id/R.da2e546841da40cdcf60061743233500?rik=IeO7Sr%2fkUW54wQ&riu=http%3a%2f%2fwww.venmond.com%2fdemo%2fvendroid%2fimg%2favatar%2fbig.jpg&ehk=JihI5nQ0BOd0W%2bZVhtIWmqwac0NMyRMOV7%2bzryywg%2fg%3d&risl=&pid=ImgRaw&r=0" class="profile-thumb" alt="">
+                        <a class="card-btn" asp-action="Details" asp-route-id="@item.Id">View profile</a>
+                    </div>
+                    <div class="profile-info">
+
+                        <h5>@Html.DisplayFor(modelItem => item.UserName)</h5>
+
+                        <p class="profile-short-description">Opis</p>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </section>
+    <script src="/js/StudentHome.js"></script>
+</body>
+

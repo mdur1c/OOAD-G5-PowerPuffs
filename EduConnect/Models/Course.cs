@@ -11,6 +11,7 @@ namespace EduConnect.Models
 
         public string Subject { get; set; }
         public string Level { get; set; }
+        public int Price { get; set; }
 
         // Navigation properties
         public Tutor Tutor { get; set; }

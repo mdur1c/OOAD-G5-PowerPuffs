@@ -8,20 +8,15 @@ using Microsoft.EntityFrameworkCore;
 using EduConnect.Data;
 using EduConnect.Models;
 
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-
 namespace EduConnect.Controllers
 {
     public class StudentsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<User> _userManager;
 
-        public StudentsController(ApplicationDbContext context, UserManager<User> userManager)
+        public StudentsController(ApplicationDbContext context)
         {
             _context = context;
-            _userManager = userManager;
         }
 
         // GET: Students
@@ -59,11 +54,10 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,UserName,Email,City,Year")] Student student)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,UserName,Email,City,Image,Year")] Student student)
         {
             if (ModelState.IsValid)
             {
-                await _userManager.AddToRoleAsync(student, "Student");
                 _context.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -92,7 +86,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,FirstName,LastName,UserName,Email,City,Year")] Student student)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,FirstName,LastName,UserName,Email,City,Image,Year")] Student student)
         {
             if (id != student.Id)
             {

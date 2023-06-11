@@ -22,15 +22,15 @@ namespace EduConnect.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<User> _signInManager;
-        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private ApplicationDbContext _context;
 
         public RegisterModel(
-            UserManager<User> userManager,
-            SignInManager<User> signInManager,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             ApplicationDbContext context)
@@ -76,37 +76,38 @@ namespace EduConnect.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
-
+        
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Email, Email = Input.Email };
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    User ok;
-
-
                     if (Input.Role == "Tutor")
                     {
-                        ok = new Tutor
+                        Tutor ok = new()
                         {
-                            
+                            Id = user.Id,
+                            UserName = user.UserName,
+                            Email = user.Email
                         };
                         await _userManager.AddToRoleAsync(user, "Tutor");
-                        _context.User.Add(ok);
+                        _context.Tutors.Add(ok);
                     }
                     else if (Input.Role == "Student")
                     {
-                        ok = new Student
+                        Student ok = new()
                         {
-                            Year = -1
+                            Id = user.Id,
+                            UserName = user.UserName,
+                            Email = user.Email
                         };
                         await _userManager.AddToRoleAsync(user, "Student");
-                        _context.User.Add(ok);
+                        _context.Students.Add(ok);
                     }
                     _context.SaveChanges();
                     _logger.LogInformation("User created a new account with password.");

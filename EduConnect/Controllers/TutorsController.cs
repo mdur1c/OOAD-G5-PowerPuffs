@@ -7,20 +7,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EduConnect.Data;
 using EduConnect.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace EduConnect.Controllers
 {
     public class TutorsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<User> _userManager;
 
-
-        public TutorsController(ApplicationDbContext context, UserManager<User> userManager)
+        public TutorsController(ApplicationDbContext context)
         {
             _context = context;
-            _userManager = userManager;
         }
 
         // GET: Tutors
@@ -58,11 +54,10 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,UserName,Email,City")] Tutor tutor)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,UserName,Email,City,Image,CV")] Tutor tutor)
         {
             if (ModelState.IsValid)
             {
-                await _userManager.AddToRoleAsync(tutor, "Tutor");
                 _context.Add(tutor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -91,7 +86,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,FirstName,LastName,UserName,Email,City")] Tutor tutor)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,FirstName,LastName,UserName,Email,City,Image,CV")] Tutor tutor)
         {
             if (id != tutor.Id)
             {

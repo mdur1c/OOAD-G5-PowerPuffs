@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduConnect.Models
@@ -13,6 +14,7 @@ namespace EduConnect.Models
         public double Price { get; set; }
         public string Time { get; set; }
         public string Day { get; set; }
+        public Boolean Accepted { get; set; }
 
         // Navigation properties
         public Tutor Tutor { get; set; }

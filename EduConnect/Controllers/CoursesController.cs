@@ -57,7 +57,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TutorUsername,Subject,Level")] Course course)
+        public async Task<IActionResult> Create([Bind("Id,TutorUsername,Subject,Level,Price")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,TutorUsername,Subject,Level")] Course course)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,TutorUsername,Subject,Level,Price")] Course course)
         {
             if (id != course.Id)
             {

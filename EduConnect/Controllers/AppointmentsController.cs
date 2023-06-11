@@ -59,7 +59,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TutorUsername,StudentUsername,Price,Time,Day")] Appointment appointment)
+        public async Task<IActionResult> Create([Bind("Id,TutorUsername,StudentUsername,Price,Time,Day,Accepted")] Appointment appointment)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace EduConnect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,TutorUsername,StudentUsername,Price,Time,Day")] Appointment appointment)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,TutorUsername,StudentUsername,Price,Time,Day,Accepted")] Appointment appointment)
         {
             if (id != appointment.Id)
             {
